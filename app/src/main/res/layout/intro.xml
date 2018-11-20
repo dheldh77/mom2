@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/smiling" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mom's touch"
+        android:textColor="#000"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="\n훌륭한 부모의 슬하에 있으면\n 사랑에 넘치는 체험을 얻을 수 있다.\n 그것은 먼 훗날 노년이 되더라고 없어지지 않는다.\n\n -루드비히 베토벤-"
+        android:textAlignment="center"
+        android:textColor="#bbb"/>
+
+    <Button
+        android:height="5dp"
+        android:width="30dp"
+        android:id="@+id/intro_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_background"
+        android:text="시작하기"/>
+</LinearLayout>

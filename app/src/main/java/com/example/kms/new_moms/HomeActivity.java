@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,10 @@ public class HomeActivity extends AppCompatActivity
     private TextView nameTextView;
     private TextView emailTextView;
     private FirebaseAuth auth;
+    private Button status;
+    private Button bluetooth;
+    private Button sets;
+    private Button chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,42 @@ public class HomeActivity extends AppCompatActivity
 
         nameTextView.setText(auth.getCurrentUser().getDisplayName());
         emailTextView.setText(auth.getCurrentUser().getEmail());
+
+        status = (Button) findViewById(R.id.go_status);
+        status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), Status.class);
+                startActivity(intent1);
+            }
+        });
+
+        bluetooth = (Button) findViewById(R.id.go_bluetooth);
+        bluetooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), Bluetooth.class);
+                startActivity(intent1);
+            }
+        });
+
+        chat = (Button) findViewById(R.id.go_chat);
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), Chat.class);
+                startActivity(intent1);
+            }
+        });
+
+        sets = (Button) findViewById(R.id.go_set);
+        sets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), Sets.class);
+                startActivity(intent1);
+            }
+        });
 
     }
 

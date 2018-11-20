@@ -1,11 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".HomeActivity"
     tools:showIn="@layout/app_bar_home">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <Button
+            android:id="@+id/go_status"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/smiling"
+            android:layout_marginHorizontal="25dp"/>
+
+        <Button
+            android:id="@+id/go_bluetooth"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/bluetooth"
+            android:layout_marginHorizontal="25dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <Button
+            android:id="@+id/go_chat"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/chat"
+            android:layout_marginHorizontal="25dp"/>
+
+        <Button
+            android:id="@+id/go_set"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/settings"
+            android:layout_marginHorizontal="25dp"/>
+
+    </LinearLayout>
+</LinearLayout>
