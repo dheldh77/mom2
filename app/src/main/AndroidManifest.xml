@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kms.new_moms">
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
@@ -39,14 +36,9 @@
         <activity android:name=".Edit">
 
         </activity>
-        <activity android:name=".DeviceScanActivity">
+        <activity android:name=".Bluetooth">
 
         </activity>
-        <activity android:name=".DeviceControlActivity">
-        </activity>
-        <service android:name=".BluetoothLeService">
-
-        </service>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
