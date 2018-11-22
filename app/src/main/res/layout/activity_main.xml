@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center">
 
 
         <EditText
@@ -35,21 +35,31 @@
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="102dp" />
 
-        <Button
-            android:id="@+id/email_login_button"
+        <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="148dp"
-            tools:layout_editor_absoluteY="192dp" />
+            android:gravity="center">
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="255dp" />
+            <Button
+                android:id="@+id/email_login_button"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="email"
+                tools:layout_editor_absoluteX="148dp"
+                tools:layout_editor_absoluteY="192dp" />
+
+            <com.google.android.gms.common.SignInButton
+                android:layout_marginHorizontal="10dp"
+                android:id="@+id/login_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Hello World!"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="255dp" />
+        </LinearLayout>
+
 
     </LinearLayout>
 

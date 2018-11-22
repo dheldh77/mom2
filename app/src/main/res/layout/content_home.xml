@@ -20,14 +20,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/smiling"
-            android:layout_marginHorizontal="25dp"/>
+            android:layout_marginHorizontal="35dp"/>
 
         <Button
             android:id="@+id/go_bluetooth"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/bluetooth"
-            android:layout_marginHorizontal="25dp"/>
+            android:layout_marginHorizontal="35dp"/>
 
     </LinearLayout>
 
@@ -43,14 +43,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/chat"
-            android:layout_marginHorizontal="25dp"/>
+            android:layout_marginHorizontal="35dp"/>
 
         <Button
             android:id="@+id/go_set"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/settings"
-            android:layout_marginHorizontal="25dp"/>
+            android:layout_marginHorizontal="35dp"/>
 
     </LinearLayout>
 </LinearLayout>
