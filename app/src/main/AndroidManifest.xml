@@ -26,9 +26,6 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".Bluetooth">
-
-        </activity>
         <activity android:name=".Status">
 
         </activity>
@@ -42,6 +39,14 @@
         <activity android:name=".Edit">
 
         </activity>
+        <activity android:name=".DeviceScanActivity">
+
+        </activity>
+        <activity android:name=".DeviceControlActivity">
+        </activity>
+        <service android:name=".BluetoothLeService">
+
+        </service>
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"

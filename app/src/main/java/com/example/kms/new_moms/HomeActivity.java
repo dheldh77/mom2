@@ -76,7 +76,7 @@ public class HomeActivity extends AppCompatActivity
         bluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), Bluetooth.class);
+                Intent intent1 = new Intent(getApplicationContext(), DeviceScanActivity.class);
                 startActivity(intent1);
             }
         });
