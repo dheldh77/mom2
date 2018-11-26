@@ -18,5 +18,16 @@
         android:onClick="btnEnableDisable_Discoverable"
         android:text="Enable Discoverable"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/btnFindUnpairedDevices"
+        android:text="Discover"
+        android:onClick="btnDiscover"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/lvNewDevices"></ListView>
 
 </LinearLayout>
