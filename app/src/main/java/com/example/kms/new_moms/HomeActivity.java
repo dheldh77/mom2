@@ -1,9 +1,17 @@
 package com.example.kms.new_moms;
 
+import android.Manifest;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.CursorLoader;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,21 +22,47 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int GALLERY_CODE = 10;
     private TextView nameTextView;
     private TextView emailTextView;
     private FirebaseAuth auth;
-    private Button status;
-    private Button bluetooth;
-    private Button sets;
-    private Button chat;
+    private FirebaseStorage storage;
+    private ImageView imageView;
+    private EditText title;
+    private EditText description;
+    private EditText height;
+    private EditText weight;
+    private EditText month;
+    private Button button;
+    private String imagePath;
+    private FirebaseDatabase database;
+
+
+//    private Button status;
+//    private Button bluetooth;
+//    private Button sets;
+//    private Button chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +70,22 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         auth = FirebaseAuth.getInstance();
+        storage = FirebaseStorage.getInstance();
+        database = FirebaseDatabase.getInstance();
+
+        imageView = (ImageView)findViewById(R.id.imageView);
+        title = (EditText)findViewById(R.id.title);
+        description = (EditText) findViewById(R.id.description);
+        height = (EditText) findViewById(R.id.height);
+        weight = (EditText) findViewById(R.id.weight);
+        month = (EditText) findViewById(R.id.month);
+        button = (Button) findViewById(R.id.button);
+
+        /*권한*/
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},0);
+        }
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -63,42 +113,29 @@ public class HomeActivity extends AppCompatActivity
         nameTextView.setText(auth.getCurrentUser().getDisplayName());
         emailTextView.setText(auth.getCurrentUser().getEmail());
 
-        status = (Button) findViewById(R.id.go_status);
-        status.setOnClickListener(new View.OnClickListener() {
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), Status.class);
-                startActivity(intent1);
+            public void onClick(View v) {
+
+
+                upload(imagePath);
+
             }
         });
 
-        bluetooth = (Button) findViewById(R.id.go_bluetooth);
-        bluetooth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), Bluetooth.class);
-                startActivity(intent1);
-            }
-        });
+        passPushTokenToServer();
 
-        chat = (Button) findViewById(R.id.go_chat);
-        chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), Chat.class);
-                startActivity(intent1);
-            }
-        });
+    }
 
-        sets = (Button) findViewById(R.id.go_set);
-        sets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(getApplicationContext(), Sets.class);
-                startActivity(intent1);
-            }
-        });
+    void passPushTokenToServer(){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String token = FirebaseInstanceId.getInstance().getToken();
 
+        Map<String, Object> map = new HashMap<>();
+        map.put("pushToken",token);
+//        database.getReference().child("images").push().setValue(imageDtO);
+        FirebaseDatabase.getInstance().getReference().child("users").push().setValue(uid);
     }
 
     @Override
@@ -139,13 +176,31 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_Board) {
+
+            startActivity(new Intent(this, BoardActivity.class));
+
+
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
+
+
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+
+            startActivityForResult(intent,GALLERY_CODE);
+
+
+
+        } else if (id == R.id.nav_bluetooth) {
+
+            startActivity(new Intent(this, Bluetooth.class));
+
 
         } else if (id == R.id.nav_manage) {
+
+            startActivity(new Intent(this, Sets.class));
 
         } else if (id == R.id.nav_share) {
 
@@ -161,5 +216,70 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == GALLERY_CODE) {
+
+            imagePath = getPath(data.getData());
+            File f = new File(imagePath);
+            imageView.setImageURI(Uri.fromFile(f));
+
+
+
+
+        }
+    }
+
+    public String getPath(Uri uri){
+        String [] proj = {MediaStore.Images.Media.DATA};
+        CursorLoader cursorLoader = new CursorLoader(this, uri, proj, null, null, null);
+
+        Cursor cursor = cursorLoader.loadInBackground();
+        int index = ((Cursor) cursor).getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+        cursor.moveToFirst();
+
+        return cursor.getString(index);
+    }
+
+    private void upload(String uri){
+        // Create a storage reference from our app
+        StorageReference storageRef = storage.getReference();
+
+
+        Uri file = Uri.fromFile(new File(uri));
+        StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
+        UploadTask uploadTask = riversRef.putFile(file);
+
+// Register observers to listen for when the download is done or if it fails
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                @SuppressWarnings("VisibleForTests")
+                Uri downladUri = taskSnapshot.getDownloadUrl();
+
+                ImageDtO imageDtO = new ImageDtO();
+                imageDtO.imageUrl = downladUri.toString();
+                imageDtO.title = title.getText().toString();
+                imageDtO.description = description.getText().toString();
+                imageDtO.height = height.getText().toString();
+                imageDtO.weight = weight.getText().toString();
+                imageDtO.month = month.getText().toString();
+                imageDtO.uid = auth.getCurrentUser().getUid();
+                imageDtO.userId = auth.getCurrentUser().getEmail();
+
+                database.getReference().child("images").push().setValue(imageDtO);
+            }
+        });
+
+
     }
 }
