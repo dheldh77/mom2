@@ -100,6 +100,8 @@ public class Bluetooth extends Activity {
         return selectedDevice;
     }
 
+
+
     // 문자열 전송하는 함수(쓰레드 사용 x)
     void sendData(String msg) {
         msg += mStrDelimiter;  // 문자열 종료표시 (\n)

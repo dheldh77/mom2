@@ -12,16 +12,12 @@
     tools:context=".Bluetooth" >
 
 
-
-
-
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_weight="1"
-        android:src="@drawable/picture1"
+        android:src="@drawable/text"
         app:srcCompat="@drawable/text" />
 
     <ImageView
@@ -29,7 +25,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_weight="1"
-        android:src="@drawable/baby"
+        android:src="@drawable/minions"
         app:srcCompat="@drawable/minions" />
 
     <EditText

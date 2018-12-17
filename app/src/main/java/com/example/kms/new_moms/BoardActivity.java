@@ -114,6 +114,9 @@ public class BoardActivity extends AppCompatActivity {
 
                 if(tmep_month == temp_avg_month){
 //                    ((CustomViewHolder)holder).temp1.setText(informs.get(i).height);
+                    ((CustomViewHolder)holder).ex1.setText(imageDtOs.get(position).month + " 개월 째 유아의 평균 신장은 " + informs.get(i).height+ "cm입니다");
+                    ((CustomViewHolder)holder).ex2.setText(imageDtOs.get(position).month + " 개월 째 유아의 평균 몸무게는 " + informs.get(i).weight+ "kg입니다");
+
                     if(temp_height> temp_avg_height){
                         ((CustomViewHolder)holder).temp1.setText("평균보다 커요!");
                     }
@@ -156,6 +159,9 @@ public class BoardActivity extends AppCompatActivity {
             TextView temp1;
             TextView temp2;
 
+            TextView ex1;
+            TextView ex2;
+
             public CustomViewHolder(View view) {
                 super(view);
                 imageView = (ImageView) view.findViewById(R.id.item_imageView);
@@ -167,6 +173,9 @@ public class BoardActivity extends AppCompatActivity {
 
                 temp1 = (TextView) view.findViewById(R.id.temp1);
                 temp2 = (TextView) view.findViewById(R.id.temp2);
+
+                ex1 = (TextView) view.findViewById(R.id.ex1);
+                ex2 = (TextView) view.findViewById(R.id.ex2);
             }
         }
     }

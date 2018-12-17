@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -279,6 +280,8 @@ public class HomeActivity extends AppCompatActivity
                 imageDtO.userId = auth.getCurrentUser().getEmail();
 
                 database.getReference().child("images").push().setValue(imageDtO);
+                Toast.makeText(getApplicationContext(), "업로드 완료.", Toast.LENGTH_LONG).show();
+
             }
         });
 
