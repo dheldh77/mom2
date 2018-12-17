@@ -9,16 +9,31 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <!--제목-->
-    <TextView
+
+    <LinearLayout
         android:paddingHorizontal="20dp"
         android:layout_marginTop="8dp"
         android:paddingBottom="10dp"
         android:background="@drawable/border_under"
-        android:id="@+id/item_textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="24dp" />
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/like"/>
+
+        <TextView
+            android:id="@+id/item_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="24dp" />
+    </LinearLayout>
+
 
     <!--사진-->
     <ImageView
@@ -34,18 +49,20 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <LinearLayout
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="생후 :"
-            android:textSize="16dp" />
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/foot"/>
 
         <TextView
             android:id="@+id/item_textView5"
-            android:layout_width="80dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="16dp" />
@@ -56,74 +73,70 @@
 
 
     <LinearLayout
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:textSize="16dp"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="신장 :"/>
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/tall"/>
+
 
         <TextView
-            android:textSize="16dp"
-            android:id="@+id/item_textView3"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:textSize="16dp"
             android:id="@+id/temp1"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp" />
 
 
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/ex1"
-        android:textSize="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <LinearLayout
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:textSize="16dp"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="몸무게 :"/>
+
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/weight"/>
 
         <TextView
-            android:textSize="16dp"
-            android:id="@+id/item_textView4"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-        <TextView
-            android:textSize="16dp"
             android:id="@+id/temp2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/ex2"
-        android:textSize="16dp"
+    <LinearLayout
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/note"/>
 
-    <TextView
-        android:textSize="16dp"
-        android:id="@+id/item_textView2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="TextView" />
+
+        <TextView
+            android:layout_marginBottom="30dp"
+            android:textSize="16dp"
+            android:id="@+id/item_textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
+
+
 
 
 

@@ -9,6 +9,7 @@
     android:gravity="center_horizontal">
 
     <LinearLayout
+        android:gravity="center"
         android:background="#000"
         android:layout_width="match_parent"
         android:layout_height="200dp">
@@ -18,7 +19,7 @@
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/minions2" />
+            app:srcCompat="@drawable/minions_white" />
     </LinearLayout>
 
     <Switch
