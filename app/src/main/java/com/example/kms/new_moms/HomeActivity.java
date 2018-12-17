@@ -204,6 +204,8 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
+            startActivity(new Intent(this, Status.class));
+
         } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_logout){

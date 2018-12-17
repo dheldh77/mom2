@@ -4,62 +4,55 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal">
-    <LinearLayout
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:gravity="end">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/edit_status"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginRight="10dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--android:background="@drawable/button_background"-->
+            <!--android:text="정보 등록"/>-->
+    <!--</LinearLayout>-->
+
+    <EditText
+        android:id="@+id/inform_mon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:ems="10"
+        android:hint="month"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
-        <ImageView
-            android:layout_marginTop="30dp"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/smiling"/>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="김민석"/>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="3세"/>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="53cm"/>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="10kg"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/inform_h"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="end">
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="height"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
-        <Button
-            android:id="@+id/edit_status"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:background="@drawable/button_background"
-            android:text="정보 등록"/>
-    </LinearLayout>
+    <EditText
+        android:id="@+id/inform_w"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="weight"
+        android:inputType="textPersonName"
+        android:text="Name" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>
